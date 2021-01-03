@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+header{
+	padding-top:10px;
+	border-bottom: 1px solid black;
+	padding-bottom: 10px;
+}
+
+.logo-svg{
+	height:30px;
+}
+.profile{
+	height: 16px;
+}
+.logo{
+	padding-left: 40px;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: x-small;
+	display:flex;
+}
+.company-name{
+	margin-top: 5px;
+	margin-left: 10px;
+}
+.navigation-buttons{
+	width: 100%;
+	display:flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-right: 10px;
+}
+
+nav{
+	display:flex;
+	
+}
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  justify-content: space-around;
+  width: 250px;
+}
+
+li {
+
+}
+
+li a {
+  font-weight: 600;
+  color:black;
+  font-size: smaller;
+}
+table, th, td {
+
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;    
+}
+.content{
+	display:flex;
+}
+.left{
+	border: 1px solid #ddd;
+	width:40%;
+}
+.right{
+	border: 1px solid #ddd;
+	width: 100%;
+}
+.boxes{
+	display: flex;
+	justify-content: center;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	padding-left:40px;
+}
+.box{
+	border-radius: 7px;
+	background-color:blue;
+	margin-left: 20px;
+	height: 80px;
+	width: 90px;
+}
+</style>
+<script>
+	async function getData() {
+	let url = 'https://f0ztti2nsk.execute-api.ap-south-1.amazonaws.com/v1/consignment/fetch';
+	let data={email:'saumyashree224@gmail.com'};
+    try {
+        let res = await fetch(url,{
+			method:'POST',
+			body: JSON.stringify(data),
+			headers:{
+				'Bearer Token':'tTU3gFVUdP',
+			}
+		});
+        return await res.json();
+    } catch (error) {
+        console.log(error);
+    }
+	}
+
+	async function renderData() {
+	let shipmentData = await getData();
+	console.log("User Data",shipmentData);
+    let html = '';
+	}
+
+	renderData();
+</script>
+</head>
+<body>
+
+<header>
+		<nav role="full-horizontal">
+			<div class="logo">
+				<img class="logo-svg" src="logo.svg"><span class="company-name">Intugine</span>
+			</div>
+			<div class="navigation-buttons">
+				<ul>
+					<li><a href="#home">Home</a></li>
+					<li><a href="#news">Brands</a></li>
+					<li><a href="#contact">Transporter</a></li>
+					<img class="profile" src="profile.svg">
+				</ul>
+			</div>
+			
+		</nav>
+		
+</header>
+
+	<div class="main-content">
+		<div class="boxes">
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+		</div>
+
+		<div class="content">
+			<div class="left">
+				Hello
+			</div>
+			<div class="right">
+				<table style="width:%">
+					<tr>
+					  <th>Name</th>
+					  <th colspan="2">Telephone</th>
+					</tr>
+					<tr>
+					  <td>Bill Gates</td>
+					  <td>55577854</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+	
+
+	
+	
+
+
+</body>
+</html>
